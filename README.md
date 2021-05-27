@@ -197,5 +197,3 @@ The goal of this part is to succeed in securing access to the list of subjects.
 Thanks !   🚀️
 
 The CTSU Dev Team
-
-```
