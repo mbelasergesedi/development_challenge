@@ -6,22 +6,6 @@ Your mission, if you accept, will be to develop a small application named Subjec
 * a Node (v14.17.0) backend in Typescript (or Javascript)
 * a Postgresql (v13.2.1) database
 
-## Installation
-
-```bash
-// To be seen with Ahmed for ENV
-
-# ENV 1 : for the Candidate Local Dev env :
-We can give a Dockerfile or docker-compose.yml
-and an installation guide/explanations/links (how to install docker and run it)
-
-# ENV 2 : for the Submission Ctsu env :
-If any, see how Ctsu will play the Docker app :
-- option 1 : github : in a docker container using github actions and a github page 
-- option 2 : heroku : deploy to heroku (free account)
-- option 3 : ctsu : internal hosting + url ...
-
-```
 
 ## Description
 
