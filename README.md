@@ -1,6 +1,6 @@
 # CTSU Dev Challenge - N°1 : The SubjectApp
 
-Your mission, if you accept, will be to develop a small application named SubjectsApp made of :
+Your mission, if you accept, will be to develop a small application named SubjectApp made of :
 
 * an Angular (v12.0.1) frontend
 * a Node (v14.17.0) backend in Typescript (or Javascript)
