@@ -1,0 +1,95 @@
+<p-toast></p-toast>
+<p-panel header="Les sujets">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+
+        </ng-template>
+
+        <ng-template pTemplate="right">
+
+        </ng-template>
+    </p-toolbar>
+    <p-table #dt [value]="subjects" [rows]="10" [paginator]="true"
+        currentPageReportTemplate="Affichage {first} de {last} à {totalRecords} sujets" [showCurrentPageReport]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+
+                </th>
+                <th pSortableColumn="subject_number">Numéro <p-sortIcon field="subject_number"></p-sortIcon>
+                </th>
+                <th pSortableColumn="subject_firstname">Nom <p-sortIcon field="subject_firstname"></p-sortIcon>
+                </th>
+                <th pSortableColumn="subject_lastname">Prénom <p-sortIcon field="subject_lastname"></p-sortIcon>
+                </th>
+                <th pSortableColumn="subject_birthdate">Date de naissance <p-sortIcon field="subject_birthdate">
+                    </p-sortIcon>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-subject>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="subject"></p-tableCheckbox>
+                </td>
+                <td>{{subject.subject_number}}</td>
+                <td>{{subject.subject_firstname |titlecase}}</td>
+                <td>{{subject.subject_lastname |titlecase}}</td>
+                <td>{{subject.subject_birthdate| date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                        (click)="editSubject(subject)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                        (click)="deleteSubject(subject)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                Il y a au total {{subjects ? subjects.length : 0 }} sujets.
+            </div>
+        </ng-template>
+    </p-table>
+</p-panel>
+<p-dialog [(visible)]="subjectDialog" [style]="{width: '450px'}" header="Sujets" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="name">Numéro</label>
+            <input type="text" pInputText id="subject_number" [(ngModel)]="subjectupdate.subject_number" required
+                autofocus />
+            <small class="p-error" *ngIf="submitted && !subjectupdate.subject_number">Le numéro est obligatoire
+                !</small>
+        </div>
+
+        <div class="p-field">
+            <label for="name">Nom</label>
+            <input type="text" pInputText id="subject_firstname" [(ngModel)]="subjectupdate.subject_firstname" required
+                autofocus />
+            <small class="p-error" *ngIf="submitted && !subjectupdate.subject_firstname">Le nom est obligatoire.</small>
+        </div>
+        <div class="p-field">
+            <label for="name">Prénom</label>
+            <input type="text" pInputText id="subject_lastname" [(ngModel)]="subjectupdate.subject_lastname" required
+                autofocus />
+            <small class="p-error" *ngIf="submitted && !subjectupdate.subject_lastname">Le prénom est
+                obligatoire.</small>
+        </div>
+        <div class="p-field">
+            <label for="name">Date de naissance</label>
+            <input type="text" pInputText id="subject_birthdate" [(ngModel)]="subjectupdate.subject_birthdate" required
+                autofocus />
+            <small class="p-error" *ngIf="submitted && !subjectupdate.subject_birthdate">Le prénom est
+                obligatoire.</small>
+        </div>
+        <div class="p-field">
+            <label for="name">Centre Cancer</label>
+            <p-dropdown [options]="cancercenters" [(ngModel)]="selectedCentre" optionLabel="center_name" optionValue="center_number"></p-dropdown>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveSubject()"></button>
+    </ng-template>
+</p-dialog>
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

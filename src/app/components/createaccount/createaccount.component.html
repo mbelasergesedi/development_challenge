@@ -1,0 +1,23 @@
+<p-panel header="Créer un compte">
+    <form [formGroup]="accountForm" (ngSubmit)="newAccount()">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="username">Pseudo</label>
+            <input id="username" type="text" pInputText formControlName="username" maxlength="50">
+        </div>
+        <div class="p-field">
+            <label for="email">Email</label>
+            <input id="email" type="text" pInputText formControlName="email" maxlength="50">
+        </div>
+        <div class="p-field">
+            <label for="password">Mot de passe</label>
+            <input id="password" type="text" pInputText formControlName="password" maxlength="50">
+        </div>
+
+        <div class="p-field">
+            <button pButton type="button" label="Créer un compte" (click)="newAccount()"
+            [disabled]="!accountForm.valid"></button>
+        </div>
+    </div>
+    </form>
+</p-panel>

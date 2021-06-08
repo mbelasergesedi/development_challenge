@@ -1,0 +1,41 @@
+<p-toast position="top-left"></p-toast>
+
+<p-panel header="Ajouter un nouveau Center cancer">
+    <form [formGroup]="centerForm" (ngSubmit)="newCenter()">
+        <div class="p-fluid p-formgrid p-grid">
+
+
+            <div class="p-field p-col">
+                <label for="center_name">Dénomination du centre</label>
+                <input id="center_name" type="text" pInputText formControlName="center_name" maxlength="50">
+            </div>
+            <div class="p-field p-col">
+                <label for="center_number">Numéro du centre</label>
+                <input id="center_number" type="text" pInputText formControlName="center_number" maxlength="50">
+            </div>
+            <div class="p-field p-col">
+                <label for="street_name">Rue</label>
+                <input id="street_name" type="text" pInputText formControlName="street_name" maxlength="50">
+            </div>
+            <div class="p-field p-col">
+                <label for="postal_code">Code postal</label>
+                <input id="postal_code" type="text" pInputText formControlName="postal_code" maxlength="10">
+            </div>
+            <div class="p-field p-col">
+                <label for="city_name">Ville</label>
+                <input id="city_name" type="text" pInputText formControlName="city_name" maxlength="20">
+            </div>
+            <div class="p-field p-col">
+                <label for="country_name">Pays</label>
+                <!--<input id="country_name" type="text" pInputText formControlName="country_name" maxlength="12">-->
+                <p-dropdown formControlName="country_name" inputId="state" [options]="countries"
+                    [(ngModel)]="selectedState" placeholder="Choisir un pays" optionLabel="name"></p-dropdown>
+            </div>
+
+            <div class="p-field p-col">
+                <button pButton type="button" label="Ajouter un centre" (click)="newCenter()"
+                    [disabled]="!centerForm.valid"></button>
+            </div>
+        </div>
+    </form>
+</p-panel>

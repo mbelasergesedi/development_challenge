@@ -1,0 +1,10 @@
+<div>
+  <!-- header -->
+  <app-header></app-header>
+  <p-tabMenu [model]="items" [activeItem]="items[0]"></p-tabMenu>
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- footer -->
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,31 @@
+<p-toast position="top-left"></p-toast>
+
+<p-panel header="Ajouter un nouveau sujet">
+  <form [formGroup]="subjectForm" (ngSubmit)="newSujet()">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="subject_number">Identifiant</label>
+        <input id="subject_number" type="number" pInputText formControlName="subject_number" maxlength="5">
+        <div *ngIf="submitted && f.subject_number.errors" class="invalid-feedback">
+          <small id="username-help" class="p-error">Username is not available.</small>
+        </div>
+      </div>
+      <div class="p-field p-col">
+        <label for="subject_firstname">Nom de famille</label>
+        <input id="subject_firstname" type="text" pInputText formControlName="subject_firstname" maxlength="12">
+      </div>
+      <div class="p-field p-col">
+        <label for="subject_lastname">Prénom</label>
+        <input id="subject_lastname" type="text" pInputText formControlName="subject_lastname" maxlength="12">
+      </div>
+      <div class="p-field p-col">
+        <label for="subject_birthdate">Date de naissance</label>
+        <p-calendar [(ngModel)]="value" formControlName="subject_birthdate" dateFormat="dd/mm/yy"></p-calendar>
+      </div>
+      <div class="p-field p-col">
+        <button pButton type="button" label="Ajouter un nouveau sujet" (click)="newSujet()"
+          [disabled]="!subjectForm.valid"></button>
+      </div>
+    </div>
+  </form>
+</p-panel>

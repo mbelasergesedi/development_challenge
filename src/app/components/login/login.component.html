@@ -1,0 +1,19 @@
+<p-panel header="Identifiez-vous">
+    <form [formGroup]="loginForm" (ngSubmit)="LoginOnSys()">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="user_email">Email</label>
+            <input id="user_email" type="text" pInputText formControlName="user_email" maxlength="50">
+        </div>
+        <div class="p-field">
+            <label for="lastname1">Mot de passe</label>
+            <input id="user_pwd" type="text" pInputText formControlName="user_pwd" maxlength="50">
+        </div>
+
+        <div class="p-field">
+            <button pButton type="button" label="Authentifiez-vous" (click)="LoginOnSys()"
+            [disabled]="!loginForm.valid" class="p-button-success" icon="pi pi-check" iconPos="right"></button>
+        </div>
+    </div>
+    </form>
+</p-panel>
